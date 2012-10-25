@@ -1,0 +1,20 @@
+/* 
+    Document   : admin
+    Created on : 25.10.2012, 19:22:52
+    Author     : Juraj Jancuska <jjancuska at gmail.org>
+    Description:
+        Purpose of the stylesheet follows.
+*/
+dt,dd {
+       font-size: 110%;
+}
+dt {
+       float: left;
+       width: 5em;
+       margin: 0 0 5px 0;
+       color: #464646;
+       font-weight: bold;
+}
+dd {
+       margin: 0 0 5px 0;
+}

@@ -1,0 +1,15 @@
+{
+	"name": "Bookme plugin",
+	"description": "Simply booking plugin for hotel and accommodation sites",
+
+	"author": "Juraj Jancuska",
+	"authorEmail": "jjancuska@gmail.com",
+	"authorUrl": "",
+
+	"dependencies": {
+		"plugins": [
+			"acl",
+			"extensions"
+		]
+	}
+}
