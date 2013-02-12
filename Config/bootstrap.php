@@ -10,36 +10,55 @@ Configure::write('Bookme.nodeTypes', array('accommodation'));
 Configure::write('Bookme.validateRules', array(
     'start_text' => array(
         'rule' => array('date', 'dmy'),
-        'message' => 'Please enter valid date in dd/mm/yyyy format',
+        'message' => __d('bookme', 'Please enter valid date in dd/mm/yyyy format'),
     ),
     'end_text' => array(
         'rule' => array('date', 'dmy'),
-        'message' => 'Please enter valid date in dd/mm/yyyy format',
+        'message' => __d('bookme', 'Please enter valid date in dd/mm/yyyy format'),
         'required' => true
     ),
     'name' => array(
         'rule' => array('notEmpty'),
-        'message' => 'This field cannot be left blank'
+        'message' => __d('bokme', 'This field cannot be left blank')
     ),
     'persons_count' => array(
         'rule' => 'numeric',
-        'message' => 'This must be number'
+        'message' => __d('bookme', 'This must be number')
     ),
     'email' => array(
         'rule' => array('email', true),
-        'message' => 'Enter valid email message'
+        'message' => __d('bookme', 'Enter valid email adress')
     )
 ));
 
 // Navigation
-CroogoNav::add('extensions.children.booknig', array(
-    'title' => __('Booking'),
+CroogoNav::add('extensions.children.booking', array(
+    'title' => __d('bookme', 'Booking'),
     'url' => '#',
     'children' => array(
-        'settings' => array(
-            'title' => __('All bookings'),
+        'bookings' => array(
+            'title' => __d('bookme', 'All bookings'),
             'url' => array('plugin' => 'bookme', 'controller' => 'bookmes', 'action' => 'admin_all')
-        )
+        ),
+        'settings' => array(
+            'title' => __d('bookme', 'Settings'),
+            'url' => array('plugin' => '', 'controller' => 'settings', 'action' => 'prefix', 'Bookme')
+        ),
     )
 ));
+
+// config email
+Configure::write('Bookme.emailConfig', array(
+    'transport' => 'Smtp',
+    'host' => 'ssl://smtp.gmail.com',
+    'port' => 465,
+    'timeout' => 30,
+    'username' => 'your@email.com',
+    'password' => 'psw',
+    'client' => null,
+    'useTheme' => false,
+    'viewTypes' => true,
+    'log' => true)
+);
+
 ?>

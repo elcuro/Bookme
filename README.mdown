@@ -1,0 +1,46 @@
+#Booking plugin for Croogo 1.4+
+
+This plugin is suitable for smaller hotel web sites. You can bind booking for nodes of various types.
+Plugin will save booking into db and send notification email.
+
+## Requirements
+ * Croogo 1.4+
+
+## Installation
+ * download and copy this plugin to app/Plugin/Bookme
+ * activate plugin in administration Extesions -> Plugins
+ * set base params in Admin -> Extensions -> Bookme -> Settings
+
+## Customization
+
+Bookme plugin is by default binded to 'accommodation' node type. This can be changed in 
+Config/bootstrap.php
+
+### 'Add booking' page
+Booking page is default routed to /booking/add. 
+
+For customization of add booking view, copy
+
+       APP/Plugin/Bookme/View/Bookmes/add.ctp
+
+to
+       
+       APP/View/Themed/MyTheme/Plugin/Bookme/Bookmes/add.ctp
+
+Is also possible customize view fallback in your themes (like Croogo nodes view), e.g. 'add_page.ctp'
+
+### Emails
+With Croogo based on CakePHP 2.2+ you can customize email by theme views
+
+Copy and modify files from
+
+	APP/Plugin/Bookme/View/Emails/html/
+
+to
+
+	APP/View/Themed/MyTheme/Bookme/Emails/html/
+
+
+## Admin bookings
+
+Admin -> Extensions -> Bookme -> All bookings

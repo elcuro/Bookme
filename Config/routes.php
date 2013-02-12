@@ -1,3 +1,7 @@
 <?php
-	//CroogoRouter::connect('/booking/add', array('plugin' => 'bookme', 'controller' => 'bookme', 'action' => 'add', 'type' => ));
+	CroogoRouter::connect('/booking/add', array(
+		'plugin' => 'bookme', 
+		'controller' => 'bookmes', 
+		'action' => 'add', 
+		'type' => 'accommodation'));
 ?>

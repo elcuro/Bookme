@@ -2,25 +2,25 @@
 <?php echo $this->Form->create('Bookme'); ?>
 <?php $bookme = $this->request->data;?>
 <div id="bookme-view">
-       <?php echo $this->Html->tag('h2', "'".$bookme['Bookme']['name']."' ".__('booking detail')); ?>
+       <?php echo $this->Html->tag('h2', "'".h($bookme['Bookme']['name'])."' ".__d('bookme', 'booking detail')); ?>
        <dl id="contact">
-              <dt><?php echo __('Name'); ?>:</dt>
+              <dt><?php echo __d('bookme', 'Name'); ?>:</dt>
               <dd><?php echo $this->Bookme->viewVar($bookme['Bookme']['name']); ?></dd>
-              <dt><?php echo __('Email'); ?>:</dt>
+              <dt><?php echo __d('bookme', 'Email'); ?>:</dt>
               <dd><?php echo $this->Html->link($bookme['Bookme']['email'], 'mailto:' . $bookme['Bookme']['email']); ?></dd>
-              <dt><?php echo __('Phone'); ?>:</dt>
+              <dt><?php echo __d('bookme', 'Phone'); ?>:</dt>
               <dd><?php echo $this->Bookme->viewVar($bookme['Bookme']['phone']); ?></dd>
-              <dt><?php echo __('Adress'); ?>:</dt>
+              <dt><?php echo __d('bookme', 'Adress'); ?>:</dt>
               <dd>
                      <?php echo $this->Bookme->viewVar($bookme['Bookme']['adress']); ?>,
                      <?php echo $this->Bookme->viewVar($bookme['Bookme']['city']); ?>,
                      <?php echo $this->Bookme->viewVar($bookme['Bookme']['country']); ?>,
               </dd>    
-              <dt><?php echo __('Note'); ?>:</dt>
+              <dt><?php echo __d('bookme', 'Note'); ?>:</dt>
               <dd><?php echo $this->Bookme->viewVar($bookme['Bookme']['note']); ?></dd>
        </dl>
        <dl id="dates">
-              <dt><?php echo __('Dates'); ?>:</dt>
+              <dt><?php echo __d('bookme', 'Dates'); ?>:</dt>
               <dd><strong><?php echo $bookme['Bookme']['start_text'] . ' - ' . $bookme['Bookme']['end_text']; ?></strong></dd>
        </dl>
        <div id="units">
@@ -41,15 +41,15 @@
                             );
                      }
                      $rows[] = array(
-                         __('Total persons'),
+                         __d('bookme', 'Total persons'),
                          $bookme['Bookme']['persons_count']
                      );
                      $rows[] = array(
-                         __('Childrens'),
+                         __d('bookme', 'Childrens'),
                          $this->Bookme->viewVar($bookme['Bookme']['childrens_count'])
                      );
                      $rows[] = array(
-                         __('Childrens without bed'),
+                         __d('bookme', 'Childrens without bed'),
                          $this->Bookme->viewVar($bookme['Bookme']['childrens_wo_bed'])
                      );
                      echo $this->Html->tableCells($rows);
@@ -57,7 +57,7 @@
               </table>
        </div>
        <div id="note">
-              <?php echo $this->Form->input('our_note', array('label' => __('Our note'))); ?>
+              <?php echo $this->Form->input('our_note', array('label' => __d('bookme', 'Our note'))); ?>
               <?php 
               echo $this->Form->hidden('id');
               echo $this->Form->hidden('type');
@@ -74,7 +74,7 @@
               echo $this->Form->hidden('childrens_count');
               ?>
        </div>
-       <p class="created"><em><?php echo __('Booking was received: ') . $this->Time->niceShort($bookme['Bookme']['created']); ?></em></p>
+       <p class="created"><em><?php echo __d('bookme', 'Booking was received: ') . $this->Time->niceShort($bookme['Bookme']['created']); ?></em></p>
 </div>
 
-<?php echo $this->Form->end(__(' Done... ')); ?>
+<?php echo $this->Form->end(__d('bookme', ' Done... ')); ?>
