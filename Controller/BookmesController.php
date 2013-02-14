@@ -67,7 +67,8 @@ public function beforeFilter() {
                 return $this->redirect(array(
                     'plugin' => false,
                     'controller' => 'nodes',
-                    'action' => 'promoted')
+                    'action' => 'promoted',
+                    'locale' => Configure::read('Config.language'))
                 );
             }
         }
