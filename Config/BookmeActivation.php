@@ -93,12 +93,12 @@ class BookmeActivation {
         $controller->Croogo->addAco('Bookmes/admin_edit');
         $controller->Croogo->addAco('Bookmes/add', array('registered', 'public'));    
 
-        $controller->Setting->write('Bookme.email', Configure::read('Site.email'), array(
+        $controller->Setting->write('Bookme.email', '', array(
             'editable' => 1, 'description' => __d('bookme', 'Email for receiving bookings'))
         );  
         $controller->Setting->write('Bookme.maxVacancy', '10', array(
             'editable' => 1, 'description' => __d('bookme', 'Max. vacancy of resort'))
-        );                                              
+        );                                                    
     }
 
 /**
@@ -132,7 +132,8 @@ class BookmeActivation {
 */
     public function onDeactivation(&$controller) {
 
-        $controller->Croogo->removeAco('Bookmes');
+        $controller->Croogo->removeAco('Bookme');
+        $controller->Setting->deleteAll(array('Setting.key LIKE' => 'Bookme%'), false);
     }
 
 /**
