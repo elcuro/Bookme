@@ -39,23 +39,14 @@ class BookmeEventHandler extends Object implements CakeEventListener {
 
         $admin_email = Configure::read('Bookme.email');
         if (!empty($admin_email)) {
-            $email = new CakeEmail();
-            $email->config(Configure::read('Bookme.emailConfig'))
-                ->template('Bookme.booking_confirm_'.$controller->request->data['Bookme']['type'])
-                ->emailFormat('html')
-                ->subject(__d('bookme', 'Booking information'))
-                ->from(array($admin_email => Configure::read('Site.title')))
-                ->to($controller->request->data['Bookme']['email'])
-                ->bcc($admin_email)
-                ->viewVars(array('bookme' => $controller->request->data));
-
-            $themed = Configure::read('Bookme.emailConfig.useTheme');
-            if ($themed && isset($controller->theme)) {
-                $email->theme($controller->theme); // theme require CakePHP 2.2+
-            }
-            if (!$email->send()) {
-                $controller->Session->setFlash(__d('bookme', 'Error during sending email confirmation'), 'default', array('class' => 'error'));
-            }
+            $controller->Email->from = Configure::read('Site.title') . ' ' .
+                '<'.$admin_email. '>';
+            $controller->Email->to = $controller->request->data['Bookme']['email'];
+            $controller->Email->bcc =  array($admin_email);
+            $controller->Email->subject = __d('bookme', 'Booking information');
+            $controller->Email->sendAs = 'html';
+            $controller->Email->template = 'Bookme.booking_confirm_'.$controller->request->data['Bookme']['type'];
+            $controller->Email->send();            
         }
     }
 }

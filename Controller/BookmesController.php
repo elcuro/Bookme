@@ -35,6 +35,16 @@ public $uses = array(
     );
 
 /**
+ * Components
+ *
+ * @var array
+ * @access public
+ */
+    public $components = array(
+        'Email'
+    );
+
+/**
 * Node types for booking
 *
 * @var array
@@ -62,6 +72,7 @@ public function beforeFilter() {
 
         if (!empty($this->request->data)) {
             if ($res = $this->Bookme->place($this->request->data)) {
+                $this->set('bookme', $this->request->data);
                 Croogo::dispatchEvent('Controller.Bookme.afterAdd', $this);
                 $this->Session->setFlash(__d('bookme', 'Your booking was successfuly sended'));
                 return $this->redirect(array(

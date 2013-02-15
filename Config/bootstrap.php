@@ -46,19 +46,4 @@ CroogoNav::add('extensions.children.booking', array(
         ),
     )
 ));
-
-// config email
-Configure::write('Bookme.emailConfig', array(
-    'transport' => 'Smtp',
-    'host' => 'ssl://smtp.gmail.com',
-    'port' => 465,
-    'timeout' => 30,
-    'username' => 'your@email.com',
-    'password' => 'psw',
-    'client' => null,
-    'useTheme' => false,
-    'viewTypes' => true,
-    'log' => true)
-);
-
 ?>
